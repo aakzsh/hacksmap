@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import urllib.request
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -10,7 +11,11 @@ def index():
 
 @app.route('/select/<username>')
 def select(username):
-    return render_template('select.html', username=username)
+    try:
+        urllib.request.urlopen(f"https://www.devpost.com/{username}")
+        return render_template('select.html', username=username)
+    except:
+        return render_template('404.html')
 
 @app.route('/wrapped/<username>')
 def wrapped(username):
