@@ -8,6 +8,17 @@ app.config["DEBUG"] = True
 def index():
     return render_template('index.html')
 
+@app.route('/select/<username>')
+def select(username):
+    return render_template('select.html', username=username)
+
+@app.route('/wrapped/<username>')
+def wrapped(username):
+    return render_template('wrapped.html')
+
+@app.route('/map/<username>')
+def map(username):
+    return render_template('map.html')
 
 
 if __name__ == "__main__":

@@ -7,7 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <p>hemlo</p>
     
+    <p>hemlo</p>
+    <p>enter your devpost username if you may</p>
+        <input type="text" name="username"  id= 'username' value="">
+        <button onclick="check()"> submit</button>
+    
+    <script>
+       
+
+        function check(){
+            var hehe = document.getElementById('username').value;
+            if(hehe==null || hehe==''){
+                window.alert('please enter a username to begin')
+            }
+            else{
+                window.location.href='/select/'+hehe;
+            }
+        }
+    </script>
+
 </body>
 </html>
