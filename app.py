@@ -6,7 +6,6 @@ from pyffmpeg import FFmpeg
 import urllib.request
 from moviepy.editor import *
 from PIL import Image, ImageDraw, ImageFont
-import cv2
 import numpy as np
 app = Flask(__name__)
 app.config["DEBUG"] = True
