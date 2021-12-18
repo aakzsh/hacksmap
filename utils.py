@@ -83,7 +83,26 @@ def getTotalProjects(param):
     return projectlist, memberCount, memberLink      
                 
     
+def getfriendslocation(param):
+    projectlist, memberCount, memberLink  = getTotalProjects(param)
+    loc = {}
+    for key in memberLink.keys():
+        new_url = "https://devpost.com/" + key
+        
+        res = requests.get(new_url)
+        soup = BeautifulSoup(res.text, features="html.parser")
 
-
+        cl = soup.find('ul', attrs = {'id': 'portfolio-user-links'})
+        location = cl.find('li')
+        flag = soup.find('span', attrs = {'class':'ss-location'})
+        if location and flag:
+            
+            
+            curr = location.getText().strip()
+            
+        else:
+            curr = ""
+        loc[key] = curr
+    return loc
 # getavatar(param)
-getTotalProjects(param)
+print(getfriendslocation(param))
