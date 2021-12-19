@@ -12,9 +12,13 @@ const side2Btn = document.querySelector('.side2-btn')
 
 const baamzi = document.querySelector('.baamzi')
 
-m = 1;
-s1 = 0;
-s2 = 2;
+m = 0;
+s1 = -1;
+s2 = 1;
+
+middleBtn.addEventListener("click", (e) => {
+    nextSlide(e)
+})
 
 const images = [2,3,5,7,9,10,12,14]
 
@@ -145,12 +149,13 @@ function nextSlide(e) {
             <img src="../static/carousel/${m}.png">
         `
 
-        setTimeout(nextSlide, 3000)
+        var t = setTimeout(nextSlide, 5000)
 
     }else {
         middle.innerHTML = `
             <video class="baamzi" src="../static/carousel/${m}.mp4" autoplay>
         `
+        clearTimeout(t)
     }
 
     s2 += 1
