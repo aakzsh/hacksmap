@@ -26,7 +26,8 @@
   <div class="container"><div id="map" style="height: 650px; width: 100%; margin-top: 10%;"></div></div>
   
   <script type="text/javascript">
-    var nameAndLatlng = '{{nameAndLatlng}}'
+    var nameAndLatlng =JSON.parse('{{ nameAndLatlng | tojson | safe}}')
+    console.log(nameAndLatlng)
     var map = L.map('map').setView([50.84673, 4.35247], 3);
     L.tileLayer('https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png', {
      attribution:
