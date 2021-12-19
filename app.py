@@ -28,7 +28,7 @@ def wrapped(username):
 
 @app.route('/map/<username>')
 def map(username):
-    return render_template('lol.html')
+    return render_template('map.html')
 
 @app.route('/tryvid')
 def tryvid():
@@ -88,15 +88,15 @@ def tryvid():
     my_image.save('static/kardolol.png')
     
     ff.options(f"-i static/parts/2.mp4 -i static/kardolol.png -filter_complex overlay=0:700 static/final/2.mp4")
-    ff.options(f"-i static/final/2.mp4 -i static/photo2.png -filter_complex overlay=350:300 static/final/21.mp4")
-    title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
-    lol = str(followers)
-    my_image = Image.open("static/bg.png")
-    image_editable = ImageDraw.Draw(my_image)
-    w, h = image_editable.textsize(str(followers), font=title_font)
-    image_editable.text(((1080-w)/2,(479-h)/2), str(followers), ((255,255,245)), font=title_font, )
-    my_image.save('static/kardolol.png')
-    ff.options(f"-i static/final/21.mp4 -i static/kardolol.png -filter_complex overlay=0:1000 static/final/22.mp4")
+    # ff.options(f"-i static/final/2.mp4 -i static/photo2.png -filter_complex overlay=350:300 static/final/21.mp4")
+    # title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
+    # lol = str(followers)
+    # my_image = Image.open("static/bg.png")
+    # image_editable = ImageDraw.Draw(my_image)
+    # w, h = image_editable.textsize(str(followers), font=title_font)
+    # image_editable.text(((1080-w)/2,(479-h)/2), str(followers), ((255,255,245)), font=title_font, )
+    # my_image.save('static/kardolol.png')
+    # ff.options(f"-i static/final/21.mp4 -i static/kardolol.png -filter_complex overlay=0:1000 static/final/22.mp4")
     # 4
     print("applying edits on 4th frame")
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
@@ -185,7 +185,7 @@ def tryvid():
 
     print("defining vids baamzi for merge")
     vid_1 = VideoFileClip("static/parts/1.mp4")
-    vid_2 = VideoFileClip("static/final/22.mp4")
+    vid_2 = VideoFileClip("static/final/2.mp4")
     vid_3 = VideoFileClip("static/parts/3.mp4")
     vid_4 = VideoFileClip("static/final/4.mp4")
     vid_5 = VideoFileClip("static/parts/5.mp4")
@@ -211,7 +211,7 @@ def tryvid():
 
     print("removing useless file")
     dir = 'static/final/'
-    filelist = glob.glob(os.path.join(dir, "*"))
+    filelist = glob.glob(os.path.join(dir, "*mp4"))
     for f in filelist:
         os.remove(f)
     return render_template('lol.html')
