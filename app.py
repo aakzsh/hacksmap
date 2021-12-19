@@ -8,6 +8,9 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 from editmethods import fourteenth, fourth, getsoulmate, second, sixteenth, sixth, tenth, twelfth
 import asyncio
+from map import locateHacker
+from utils import getdisplayname, getavatar, getfriendslocation, getTotalProjects
+
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -28,8 +31,18 @@ def select(username):
 def wrapped(username):
     return render_template('wrapped.html')
 
+# hacker_info = []
 @app.route('/map/<username>')
 def map(username):
+    hackername = getdisplayname(username)
+    hackeravatar = getavatar(username)
+    projectlist, memberCount, memberLink = getTotalProjects(username)
+    loc = getfriendslocation(username)
+    nameAndLatlng = {}
+    for hacker in loc.keys():
+        if loc[hacker] != '':
+            nameAndLatlng[hacker] = (locateHacker(loc[hacker]), getavatar(hacker))
+    print(nameAndLatlng)
     return render_template('map.html')
 
 @app.route('/tryvid')
