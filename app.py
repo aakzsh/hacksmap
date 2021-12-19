@@ -9,7 +9,7 @@ import numpy as np
 from editmethods import fourteenth, fourth, getsoulmate, second, sixteenth, sixth, tenth, twelfth
 import asyncio
 from map import locateHacker
-from utils import getdisplayname, getavatar, getfriendslocation, getTotalProjects
+from utils import getdisplayname, getavatar, getfriendslocation, getTotalProjects, winnerandparticipated
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -29,14 +29,32 @@ def select(username):
 
 @app.route('/wrapped/<username>')
 def wrapped(username):
+    name = getdisplayname(username).split(" ")[0]
+    pfpurl = getavatar(username)
+    projectlist, memberCount, memberLink = getTotalProjects(username)
+    wins, hackathons = winnerandparticipated(username)
+    x = []
+    y=[]
+    for i in range(len(projectlist)):
+        x.append(projectlist[i]['projecttitle'])
+        y.append(projectlist[i]['like'])
+    # print(x)
+    # print(y)
+    max = sorted(y, reverse=True)
+    print(y)
+    print(max)
+    # lol = y.index(max)
+    # print(y)
+    # print(x)
+    # print(x[lol])
     return render_template('wrapped.html')
 
 # hacker_info = []
 @app.route('/map/<username>')
 def map(username):
-    hackername = getdisplayname(username)
-    hackeravatar = getavatar(username)
-    projectlist, memberCount, memberLink = getTotalProjects(username)
+    # hackername = getdisplayname(username)
+    # hackeravatar = getavatar(username)
+    # projectlist, memberCount, memberLink = getTotalProjects(username)
     loc = getfriendslocation(username)
     nameAndLatlng = {}
     for hacker in loc.keys():

@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 
-param = 'Chinmay-KB'
+param = 'shrutigupta5555'
 
 def getavatar(param):
     
@@ -12,7 +12,7 @@ def getavatar(param):
     soup = BeautifulSoup(res.text, features="html.parser")
 
     avatarurl = soup.find('img', attrs = {"class": "user-photo"})
-    print(avatarurl)
+    # print(avatarurl)
     return avatarurl['src']
 
 def getdisplayname(param):
@@ -46,7 +46,7 @@ def getTotalProjects(param):
     for i in range(pages):
         x = i + 1
         url = "https://devpost.com/" + param + "?page=" + str(x)
-        print(url)
+        # print(url)
         res = requests.get(url)
         soup = BeautifulSoup(res.text)
         projectsDiv =  soup.find_all('div', attrs = {"class": "gallery-item"})
@@ -79,7 +79,7 @@ def getTotalProjects(param):
                         memberLink[id] = name
             p['team'] = teamlist
             projectlist.append(p)
-    print(projectlist)     
+    # print(projectlist)     
     return projectlist, memberCount, memberLink      
                 
     
@@ -107,7 +107,7 @@ def getfriendslocation(param):
 
 def winnerandparticipated(param):
     url = "https://devpost.com/"+param+"/achievements"
-    print(url)
+    # print(url)
 
     res = requests.get(url)
     soup = BeautifulSoup(res.text)
@@ -120,4 +120,4 @@ def winnerandparticipated(param):
     
     return winner, participated
 # getavatar(param)
-print(getfriendslocation(param))
+# print(getfriendslocation(param))
