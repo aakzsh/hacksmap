@@ -104,5 +104,20 @@ def getfriendslocation(param):
             curr = ""
         loc[key] = curr
     return loc
+
+def winnerandparticipated(param):
+    url = "https://devpost.com/"+param+"/achievements"
+    print(url)
+
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text)
+
+    participatedDiv =  soup.find('div', attrs = {'id': 'achievement_3'})
+    participated = participatedDiv.find('h5').getText().strip().split(" ")[-1]
+
+    winnerDiv = soup.find('div', attrs = {'id': 'achievement_5'})
+    winner = winnerDiv.find('h5').getText().strip().split(" ")[-1]
+    
+    return winner, participated
 # getavatar(param)
 print(getfriendslocation(param))
