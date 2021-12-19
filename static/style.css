@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+body{
+    background-image: url(https://media.discordapp.net/attachments/873911460055642152/922027116420280380/bg.png?width=1033&height=671);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.title{
+    margin-bottom: -1rem;
+    font-size: 3rem;
+}
+
+.subtitle{
+    font-weight: 100;
+    font-size: 1.5rem;
+}
+.maindiv{
+    margin-right: 2rem;
+    float: right;
+    margin: 0;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.rowbaamzi{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+input{
+    width: 20rem;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+    padding-left: 2rem;
+    height: 3rem;
+    border: 1rem;
+}
+
+button{
+    background-color: rgba(119, 62, 139, 1);
+    border-radius: 2rem;
+    color: white;
+    border: 2px solid transparent;
+    width: 23rem;
+    height: 3rem;
+}

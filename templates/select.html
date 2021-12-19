@@ -5,12 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://i.ibb.co/WWbycY3/1617444657903.png" type="image/x-icon">
+    
     <title>Document</title>
 </head>
 <body>
-    <p>semlect baamzi</p>
-    <p>select btw these two and emjoy</p>
-    <button onclick="window.location.href='/map/{{username}}'">map</button>
-    <button onclick="window.location.href='/wrapped/{{username}}'">wrapped</button>
+    <style>
+        
+body{
+    background-color: black;
+    color: white;
+}
+
+
+button{
+    background-color: rgba(119, 62, 139, 1);
+    border-radius: 2rem;
+    color: white;
+    border: 2px solid transparent;
+    width: 23rem;
+    height: 3rem;
+    margin-top: 2rem;
+}
+
+
+.maindiv{
+    margin-top: 6rem;
+    
+    display: flex;
+ justify-content: space-around;
+}
+.photo{
+    height: 23rem;
+    width: 23rem;
+    background-color: white;
+}
+    </style>
+<div class="first">
+    <div class="maindiv">
+        <div>
+            <div class="photo">
+    
+            </div>
+            <button onclick="window.location.href='/map/{{username}}'">view hackathon map</button>
+        </div>
+        <div>
+            <div class="photo">
+    
+            </div>
+            <button onclick="window.location.href='/wrapped/{{username}}'">view journey wrap</button>
+        </div>
+    </div>
+</div>
+    
+
 </body>
 </html>

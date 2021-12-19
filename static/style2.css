@@ -1,0 +1,15 @@
+
+body{
+    background-color: black;
+    color: white;
+}
+
+
+button{
+    background-color: rgba(119, 62, 139, 1);
+    border-radius: 2rem;
+    color: white;
+    border: 2px solid transparent;
+    width: 23rem;
+    height: 3rem;
+}
