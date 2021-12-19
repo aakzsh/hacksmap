@@ -105,6 +105,15 @@ def getfriendslocation(param):
         loc[key] = curr
     return loc
 
+
+def getfollowers(param):
+    url = "https://devpost.com/" + param
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text)
+
+    followers = soup.find('div', attrs = {"class": "totals"}).getText().strip()
+    return followers
+
 def winnerandparticipated(param):
     url = "https://devpost.com/"+param+"/achievements"
     print(url)
