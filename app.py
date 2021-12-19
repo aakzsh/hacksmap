@@ -6,7 +6,7 @@ import urllib.request
 from moviepy.editor import *
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-from editimage import fourteenth,  fifth,  second, ninth,  tenth, twelfth, third
+from editimage import fourteenth,  fifth,  second, ninth, seventh,  tenth, twelfth, third
 import asyncio
 from map import locateHacker
 from utils import getdisplayname, getavatar, getfollowers, getfriendslocation, getTotalProjects, winnerandparticipated
@@ -79,6 +79,7 @@ def wrapped(username):
     second(pfpurl, name, follower)
     third(hackathons)
     fifth(bestproject)
+    seventh(top5projects)
     ninth(wins)
     tenth(str(hackathons), str(totallikes))
     twelfth(str(totalteammates))

@@ -23,7 +23,7 @@ def second(pfpurl, name, followers):
     Image.fromarray(npImage).save('static/photo2.png')
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     followers_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
-    my_image = Image.open("static/carousel/2.png")
+    my_image = Image.open("static/initial/2.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(name, font=title_font)
     image_editable.text(((1080-w)/2,(479-h)/2 + 800), name, ((255,255,245)), font=title_font, )
@@ -39,7 +39,7 @@ def second(pfpurl, name, followers):
 
 def third(name):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
-    my_image = Image.open("static/carousel/5.png")
+    my_image = Image.open("static/initial/3.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(name, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 ), name, ((255,255,245)), font=title_font, )
@@ -47,24 +47,24 @@ def third(name):
 
 def fifth(name):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 80)
-    my_image = Image.open("static/carousel/5.png")
+    my_image = Image.open("static/initial/5.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(name, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 ), name, ((255,255,245)), font=title_font, )
     my_image.save("static/carousel/5.png")
 
 def seventh(name):
-    title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
-    my_image = Image.open("static/carousel/7.png")
+    title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 80)
+    my_image = Image.open("static/initial/7.png")
     image_editable = ImageDraw.Draw(my_image)
-    w, h = image_editable.textsize(name, font=title_font)
-    image_editable.text(((1080-w)/2,(1920-h)/2 ), name[0] + "\n" + name[1] + "\n" + name[2] + "\n" + name[3] + "\n"+name[4], ((255,255,245)), font=title_font, )
+    w, h = image_editable.textsize(name[0], font=title_font)
+    image_editable.text((50,500), name[0] + "\n" + name[1] + "\n" + name[2] + "\n" + name[3] + "\n"+name[4], ((61,76,245)), font=title_font, )
     my_image.save("static/carousel/7.png")
 
 
 def ninth(wins):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
-    my_image = Image.open("static/carousel/9.png")
+    my_image = Image.open("static/initial/9.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(wins, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 ), wins, ((255,255,245)), font=title_font, )
@@ -72,7 +72,7 @@ def ninth(wins):
 
 def tenth(proj, likes):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
-    my_image = Image.open("static/carousel/10.png")
+    my_image = Image.open("static/initial/10.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(likes, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 - 200 ), proj+"\n\n\n\n\n"+likes, ((255,255,245)), font=title_font, )
@@ -80,7 +80,7 @@ def tenth(proj, likes):
 
 def twelfth(totalteam):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
-    my_image = Image.open("static/carousel/12.png")
+    my_image = Image.open("static/initial/12.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(totalteam, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 + 50 ), totalteam, ((255,255,245)), font=title_font, )
@@ -104,10 +104,10 @@ def fourteenth(url, name):
     Image.fromarray(npImage).save('static/soulmate2.png')
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     followers_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
-    my_image = Image.open("static/carousel/14.png")
+    my_image = Image.open("static/initial/14.png")
     image_editable = ImageDraw.Draw(my_image)
-    w, h = image_editable.textsize(name, font=title_font)
-    image_editable.text(((1080-w)/2,(479-h)/2 + 800), name, ((255,255,245)), font=title_font, )
+    w, h = image_editable.textsize(name.split(" ")[0], font=title_font)
+    image_editable.text(((1080-w)/2,(479-h)/2 + 800), name.split(" ")[0], ((255,255,245)), font=title_font, )
     
     
     my_image.save('static/carousel/kardolel.png')
