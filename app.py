@@ -6,7 +6,7 @@ import urllib.request
 from moviepy.editor import *
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-from editmethods import fourteenth, fourth, getsoulmate, second, sixteenth, sixth, tenth, twelfth
+from editimage import fourteenth,  fifth,  second, ninth,  tenth, twelfth, third
 import asyncio
 from map import locateHacker
 from utils import getdisplayname, getavatar, getfollowers, getfriendslocation, getTotalProjects, winnerandparticipated
@@ -76,7 +76,14 @@ def wrapped(username):
     topteammateavatar = getavatar(topteammate)
     # print(totallikes)
     print(name, pfpurl, wins, hackathons, follower, top5projects, bestproject, totalteammates, topteammate, topteammateusername, topteammateavatar, totallikes)
-    return render_template('wrapped.html')
+    second(pfpurl, name, follower)
+    third(hackathons)
+    fifth(bestproject)
+    ninth(wins)
+    tenth(str(hackathons), str(totallikes))
+    twelfth(str(totalteammates))
+    fourteenth(topteammateavatar,  topteammateusername)
+    return render_template('hackathon.html')
 
 # hacker_info = []
 @app.route('/map/<username>')
@@ -110,7 +117,7 @@ async def tryvid():
     soulmate_url = "https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/user_photos/001/698/915/datas/profile.jpg"
     x = 150
     print("getting soulmate image")
-    await getsoulmate(soulmate_url, pfpurl, name, followers, registered, bestproj, hours, totallikes, totalproj, teammates, soulmate)
+    # await getsoulmate(soulmate_url, pfpurl, name, followers, registered, bestproj, hours, totallikes, totalproj, teammates, soulmate)
     
     return render_template('lol.html')
 
