@@ -34,10 +34,12 @@ async def getsoulmate(soulmate_url, pfpurl, name, followers, registered, bestpro
     npAlpha=np.array(alpha)
     npImage=np.dstack((npImage,npAlpha))
     Image.fromarray(npImage).save('static/photo2.png')
+    print("get data done")
     return second(name, followers, registered, bestproj, hours, totallikes, totalproj, teammates,soulmate)
 
 
 def second(name, followers, registered, bestproj, hours, totallikes, totalproj, teammates,soulmate):
+    print("2nd")
     ff = FFmpeg()
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     lol = name.split(" ")[0]
@@ -61,6 +63,7 @@ def second(name, followers, registered, bestproj, hours, totallikes, totalproj, 
 
 
 def fourth(registered, bestproj, hours, totallikes, totalproj, teammates,soulmate):
+    print("4th")
     ff = FFmpeg()
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/bg.png")
@@ -78,6 +81,7 @@ def fourth(registered, bestproj, hours, totallikes, totalproj, teammates,soulmat
     return sixth(bestproj, hours, totallikes, totalproj, teammates,soulmate)
 
 def sixth(bestproj, hours, totallikes, totalproj, teammates,soulmate):
+    print("6th")
     ff = FFmpeg()
     if len(bestproj)>20:
         bestproj = bestproj[0:20]+".."
@@ -92,6 +96,7 @@ def sixth(bestproj, hours, totallikes, totalproj, teammates,soulmate):
     return tenth(hours, totallikes, totalproj, teammates,soulmate)
 
 def tenth(hours, totallikes, totalproj, teammates,soulmate):
+    print("10th")
     ff = FFmpeg()
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 120)
     my_image = Image.open("static/bg.png")
@@ -104,6 +109,7 @@ def tenth(hours, totallikes, totalproj, teammates,soulmate):
     return twelfth(totallikes, totalproj, teammates,soulmate)
 
 def twelfth(totallikes, totalproj, teammates,soulmate):
+    print("12th")
     ff= FFmpeg()
     print("applying edits on 12th frame")
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 180)
@@ -126,6 +132,7 @@ def twelfth(totallikes, totalproj, teammates,soulmate):
     return fourteenth(teammates,soulmate)
 
 def fourteenth(teammates,soulmate):
+    print("14th")
     ff=FFmpeg()
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/bg.png")
@@ -143,6 +150,7 @@ def fourteenth(teammates,soulmate):
     return sixteenth(soulmate)
 
 def sixteenth(soulmate):
+    print("16th")
     ff=FFmpeg()
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     lol = soulmate.split(" ")[0]
@@ -157,6 +165,7 @@ def sixteenth(soulmate):
     return defvid()
 
 def defvid():
+    print("defining vids")
     vid_1 = VideoFileClip("static/parts/1.mp4")
     vid_2 = VideoFileClip("static/final/22.mp4")
     vid_3 = VideoFileClip("static/parts/3.mp4")
@@ -179,6 +188,7 @@ def defvid():
     return removebaamzi()
 
 def removebaamzi():
+    print("removing useless shiz")
     dir = 'static/final/'
     filelist = glob.glob(os.path.join(dir, "*"))
     for f in filelist:
