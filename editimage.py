@@ -6,6 +6,8 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 
 def second(pfpurl, name, followers):
+    if pfpurl[0]!='h':
+        pfpurl = "https:" + pfpurl
     urllib.request.urlretrieve(pfpurl, "static/photo.png")
     im = Image.open("static/photo.png")
     im1 = im.resize((400,400))
@@ -85,6 +87,8 @@ def twelfth(totalteam):
     my_image.save("static/carousel/12.png")
 
 def fourteenth(url, name):
+    if url[0]!='h':
+        url = "https:" + url
     urllib.request.urlretrieve(url, "static/soulmate.png")
     im = Image.open("static/soulmate.png")
     im1 = im.resize((400,400))
