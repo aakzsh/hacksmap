@@ -94,12 +94,13 @@ function prevSlide(e) {
             <img src="../static/carousel/${m}.png">
         `
 
-        
+        var t = setTimeout(nextSlide, 5000)
 
     }else {
         middle.innerHTML = `
             <video class="baamzi" src="../static/carousel/${m}.mp4" autoplay>
         `
+        clearTimeout(t)
     }
 
     s2 -= 1
