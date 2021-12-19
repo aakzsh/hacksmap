@@ -9,7 +9,7 @@ import numpy as np
 from editmethods import fourteenth, fourth, getsoulmate, second, sixteenth, sixth, tenth, twelfth
 import asyncio
 from map import locateHacker
-from utils import getdisplayname, getavatar, getfriendslocation, getTotalProjects, winnerandparticipated
+from utils import getdisplayname, getavatar, getfollowers, getfriendslocation, getTotalProjects, winnerandparticipated
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -31,37 +31,66 @@ def select(username):
 def wrapped(username):
     name = getdisplayname(username).split(" ")[0]
     pfpurl = getavatar(username)
-    projectlist, memberCount, memberLink = getTotalProjects(username)
     wins, hackathons = winnerandparticipated(username)
-    x = []
-    y=[]
+    projectlist, memberCount, memberLink = getTotalProjects(username)
+    follower = getfollowers(username)
+    topprojects = {}
+    totallikes = 0
+
     for i in range(len(projectlist)):
-        x.append(projectlist[i]['projecttitle'])
-        y.append(projectlist[i]['like'])
-    # print(x)
-    # print(y)
-    max = sorted(y, reverse=True)
-    print(y)
-    print(max)
-    # lol = y.index(max)
-    # print(y)
-    # print(x)
-    # print(x[lol])
+        
+        k = projectlist[i]['like']
+        totallikes += int(k)
+        v = projectlist[i]['projecttitle']
+        # print(topprojects)
+        if k in topprojects:
+            curr = topprojects[k]
+            
+            curr.append(v)
+
+            topprojects[k] = curr
+        else:
+            topprojects[k] = [v]
+
+    sorted_projects = sorted(topprojects.keys(), reverse=True)
+
+    top5projects = []
+    curr = ""
+    for i in range(len(sorted_projects)):
+
+        curr = topprojects[sorted_projects[i]]
+        # print("curr:", curr)
+        for j in curr:
+            if len(top5projects) < 5:
+                top5projects.append(j)
+
+
+    bestproject = top5projects[0]
+
+    totalteammates = len(memberCount)
+    sorted_teammates = sorted(memberCount.items(), key=lambda item: int(item[1]), reverse=True)
+    # print(totalteammates, sorted(memberCount.items(), key=lambda item: int(item[1]), reverse=True))
+
+    topteammate = sorted_teammates[0][0]
+    topteammateusername = memberLink[topteammate]
+    topteammateavatar = getavatar(topteammate)
+    # print(totallikes)
+    print(name, pfpurl, wins, hackathons, follower, top5projects, bestproject, totalteammates, topteammate, topteammateusername, topteammateavatar, totallikes)
     return render_template('wrapped.html')
 
 # hacker_info = []
 @app.route('/map/<username>')
 def map(username):
-    # hackername = getdisplayname(username)
-    # hackeravatar = getavatar(username)
-    # projectlist, memberCount, memberLink = getTotalProjects(username)
+    hackername = getdisplayname(username)
+    hackeravatar = getavatar(username)
+    projectlist, memberCount, memberLink = getTotalProjects(username)
     loc = getfriendslocation(username)
     nameAndLatlng = {}
     for hacker in loc.keys():
         if loc[hacker] != '':
-            nameAndLatlng[hacker] = (locateHacker(loc[hacker]), getavatar(hacker))
-    print(nameAndLatlng)
-    return render_template('map.html')
+            nameAndLatlng[hacker] = [locateHacker(loc[hacker]), getavatar(hacker)]
+    # print(nameAndLatlng)
+    return render_template('map.html', nameAndLatlng=nameAndLatlng)
 
 @app.route('/tryvid')
 async def tryvid():
