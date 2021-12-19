@@ -33,16 +33,32 @@ def second(pfpurl, name, followers):
     im2 = Image.open('static/photo1.png')
     back_im = im1.copy()
     back_im.paste(im2, (340, 350))
-    back_im.save('static/carousel/kardolmao.png', quality=100)
+    back_im.save('static/carousel/2.png', quality=100)
 
-
-def fifth(name):
-    title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
+def third(name):
+    title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/carousel/5.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(name, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 ), name, ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/hemhe.png")
+    my_image.save("static/carousel/3.png")
+
+def fifth(name):
+    title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 80)
+    my_image = Image.open("static/carousel/5.png")
+    image_editable = ImageDraw.Draw(my_image)
+    w, h = image_editable.textsize(name, font=title_font)
+    image_editable.text(((1080-w)/2,(1920-h)/2 ), name, ((255,255,245)), font=title_font, )
+    my_image.save("static/carousel/5.png")
+
+def seventh(name):
+    title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
+    my_image = Image.open("static/carousel/7.png")
+    image_editable = ImageDraw.Draw(my_image)
+    w, h = image_editable.textsize(name, font=title_font)
+    image_editable.text(((1080-w)/2,(1920-h)/2 ), name[0] + "\n" + name[1] + "\n" + name[2] + "\n" + name[3] + "\n"+name[4], ((255,255,245)), font=title_font, )
+    my_image.save("static/carousel/7.png")
+
 
 def ninth(wins):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
@@ -50,7 +66,7 @@ def ninth(wins):
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(wins, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 ), wins, ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/hemhe9.png")
+    my_image.save("static/carousel/9.png")
 
 def tenth(proj, likes):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
@@ -58,7 +74,7 @@ def tenth(proj, likes):
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(likes, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 - 200 ), proj+"\n\n\n\n\n"+likes, ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/hemhe10.png")
+    my_image.save("static/carousel/10.png")
 
 def twelfth(totalteam):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
@@ -66,7 +82,7 @@ def twelfth(totalteam):
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(totalteam, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 + 50 ), totalteam, ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/hemhe12.png")
+    my_image.save("static/carousel/12.png")
 
 def fourteenth(url, name):
     urllib.request.urlretrieve(url, "static/soulmate.png")
@@ -95,4 +111,4 @@ def fourteenth(url, name):
     im2 = Image.open('static/soulmate1.png')
     back_im = im1.copy()
     back_im.paste(im2, (340, 350))
-    back_im.save('static/carousel/kardolmaol.png', quality=100)
+    back_im.save('static/carousel/14.png', quality=100)
