@@ -111,8 +111,12 @@ def getfollowers(param):
     res = requests.get(url)
     soup = BeautifulSoup(res.text)
 
-    followers = soup.find('div', attrs = {"class": "totals"}).getText().strip()
+    followers = soup.find('li', attrs = {"data-followers-tab": "true"}).getText().strip().split(" ")[0]
+    print(followers)
     return followers
+
+
+getfollowers("aakzsh")
 
 def winnerandparticipated(param):
     url = "https://devpost.com/"+param+"/achievements"

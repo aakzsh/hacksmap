@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://i.ibb.co/WWbycY3/1617444657903.png" type="image/x-icon">
-    
+    <link rel="stylesheet" href="../static/css/hack.css">
     <title>Document</title>
 </head>
 <body>
     <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
         
 body{
     background-color: black;
     color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -37,20 +40,28 @@ button{
 .photo{
     height: 23rem;
     width: 23rem;
-    background-color: white;
+    background-color: #2A1724;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo h2 {
+    margin: auto;
+    
 }
     </style>
 <div class="first">
     <div class="maindiv">
         <div>
-            <div class="photo">
-    
+            <div class="photo" >
+                <h2>Hackathon Map</h2>
             </div>
             <button onclick="window.location.href='/map/{{username}}'">view hackathon map</button>
         </div>
         <div>
             <div class="photo">
-    
+                <h2>Journey Wrap</h2>
             </div>
             <button onclick="window.location.href='/wrapped/{{username}}'">view journey wrap</button>
         </div>
