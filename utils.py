@@ -49,7 +49,10 @@ def getTotalProjects(param):
         # print(url)
         res = requests.get(url)
         soup = BeautifulSoup(res.text)
-        projectsDiv =  soup.find_all('div', attrs = {"class": "gallery-item"})
+        try:
+            projectsDiv =  soup.find_all('div', attrs = {"class": "gallery-item"})
+        except:
+            projectsDiv=[]
         for projects in projectsDiv:
             p = {}
             projecturl = projects.find('img', attrs = {"class": "software_thumbnail_image"})['src']
@@ -111,12 +114,15 @@ def getfollowers(param):
     res = requests.get(url)
     soup = BeautifulSoup(res.text)
 
-    followers = soup.find('li', attrs = {"data-followers-tab": "true"}).getText().strip().split(" ")[0]
-    print(followers)
+    try:
+        followers = soup.find('li', attrs = {"data-followers-tab": "true"}).getText().strip().split(" ")[0]
+    except:
+        followers = 0
+    # print(followers)
     return followers
 
 
-getfollowers("aakzsh")
+# getfollowers("aakzsh")
 
 def winnerandparticipated(param):
     url = "https://devpost.com/"+param+"/achievements"
@@ -125,11 +131,17 @@ def winnerandparticipated(param):
     res = requests.get(url)
     soup = BeautifulSoup(res.text)
 
-    participatedDiv =  soup.find('div', attrs = {'id': 'achievement_3'})
-    participated = participatedDiv.find('h5').getText().strip().split(" ")[-1]
+    try:
+        participatedDiv =  soup.find('div', attrs = {'id': 'achievement_3'})
+        participated = participatedDiv.find('h5').getText().strip().split(" ")[-1]
+    except:
+        participated = 0
 
-    winnerDiv = soup.find('div', attrs = {'id': 'achievement_5'})
-    winner = winnerDiv.find('h5').getText().strip().split(" ")[-1]
+    try:
+        winnerDiv = soup.find('div', attrs = {'id': 'achievement_5'})
+        winner = winnerDiv.find('h5').getText().strip().split(" ")[-1]
+    except:
+        winner = 0
     
     return winner, participated
 # getavatar(param)

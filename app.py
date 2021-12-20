@@ -32,6 +32,8 @@ def wrapped(username):
     name = getdisplayname(username).split(" ")[0]
     pfpurl = getavatar(username)
     wins, hackathons = winnerandparticipated(username)
+    if hackathons==0:
+        return render_template('new.html')
     projectlist, memberCount, memberLink = getTotalProjects(username)
     follower = getfollowers(username)
     topprojects = {}
@@ -67,15 +69,24 @@ def wrapped(username):
     # print(sorted_projects)
     # print("top 5", top5projects)
 
-    bestproject = top5projects[0]
+    try:
+        bestproject = top5projects[0]
+    except:
+        bestproject = ""
 
     totalteammates = len(memberCount)
     sorted_teammates = sorted(memberCount.items(), key=lambda item: int(item[1]), reverse=True)
     # print(totalteammates, sorted(memberCount.items(), key=lambda item: int(item[1]), reverse=True))
 
-    topteammate = sorted_teammates[0][0]
-    topteammateusername = memberLink[topteammate]
-    topteammateavatar = getavatar(topteammate)
+    try:
+        topteammate = sorted_teammates[0][0]
+        topteammateusername = memberLink[topteammate]
+        topteammateavatar = getavatar(topteammate)
+    except:
+        topteammate = ""
+        topteammateusername = ""
+        topteammateavatar = "https://i1.wp.com/devpost-challengepost.netdna-ssl.com/assets/defaults/no-avatar-180.png?ssl=1"
+
     # print(totallikes)
     print(name, pfpurl, wins, hackathons, follower, top5projects, bestproject, totalteammates, topteammate, topteammateusername, topteammateavatar, totallikes)
     

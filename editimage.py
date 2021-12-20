@@ -42,8 +42,8 @@ def third(name):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/initial/3.png")
     image_editable = ImageDraw.Draw(my_image)
-    w, h = image_editable.textsize(name, font=title_font)
-    image_editable.text(((1080-w)/2,(1920-h)/2 ), name, ((255,255,245)), font=title_font, )
+    w, h = image_editable.textsize(str(name), font=title_font)
+    image_editable.text(((1080-w)/2,(1920-h)/2 ), str(name), ((255,255,245)), font=title_font, )
     my_image.save("static/carousel/3.png")
 
 def fifth(name):
@@ -56,10 +56,15 @@ def fifth(name):
 
 def seventh(name):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 80)
+    final = ""
+    for i in name:
+        final = final + i + "\n"
     my_image = Image.open("static/initial/7.png")
+    if len(name) == 0:
+        name.append("")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(name[0], font=title_font)
-    image_editable.text((50,500), name[0] + "\n" + name[1] + "\n" + name[2] + "\n" + name[3] + "\n"+name[4], ((61,76,245)), font=title_font, )
+    image_editable.text((50,500), final, ((61,76,245)), font=title_font, )
     my_image.save("static/carousel/7.png")
 
 
@@ -67,8 +72,8 @@ def ninth(wins):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     my_image = Image.open("static/initial/9.png")
     image_editable = ImageDraw.Draw(my_image)
-    w, h = image_editable.textsize(wins, font=title_font)
-    image_editable.text(((1080-w)/2,(1920-h)/2 ), wins, ((255,255,245)), font=title_font, )
+    w, h = image_editable.textsize(str(wins), font=title_font)
+    image_editable.text(((1080-w)/2,(1920-h)/2 ), str(wins), ((255,255,245)), font=title_font, )
     my_image.save("static/carousel/9.png")
 
 def tenth(proj, likes):
