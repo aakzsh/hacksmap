@@ -39,7 +39,7 @@ def wrapped(username):
 
     for i in range(len(projectlist)):
         
-        k = projectlist[i]['like']
+        k = int(projectlist[i]['like'])
         totallikes += int(k)
         v = projectlist[i]['projecttitle']
         # print(topprojects)
@@ -64,6 +64,8 @@ def wrapped(username):
             if len(top5projects) < 5:
                 top5projects.append(j)
 
+    # print(sorted_projects)
+    # print("top 5", top5projects)
 
     bestproject = top5projects[0]
 
@@ -76,6 +78,7 @@ def wrapped(username):
     topteammateavatar = getavatar(topteammate)
     # print(totallikes)
     print(name, pfpurl, wins, hackathons, follower, top5projects, bestproject, totalteammates, topteammate, topteammateusername, topteammateavatar, totallikes)
+    
     second(pfpurl, name, follower)
     third(hackathons)
     fifth(bestproject)

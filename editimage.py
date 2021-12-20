@@ -26,8 +26,9 @@ def second(pfpurl, name, followers):
     my_image = Image.open("static/initial/2.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(name, font=title_font)
+    r , x = image_editable.textsize(followers, font=title_font)
     image_editable.text(((1080-w)/2,(479-h)/2 + 800), name, ((255,255,245)), font=title_font, )
-    image_editable.text(((1080-w)/2 + 30,(479-h)/2 + 1100), followers, ((255,255,245)), font=title_font, )
+    image_editable.text(((1080-r)/2,(479-x)/2 + 1100), followers, ((255,255,245)), font=title_font, )
     
     
     my_image.save('static/carousel/kardolol.png')

@@ -1,5 +1,5 @@
-const prev = document.querySelector('.previous');
-const next = document.querySelector('.next');
+// const prev = document.querySelector('.previous');
+// const next = document.querySelector('.next');
 const items = document.querySelectorAll('.item');
 
 const side1 = document.getElementById('side1');
@@ -68,7 +68,7 @@ baamzi.onended = function(e) {
 };
 
 function prevSlide(e) {
-
+    clearTimeout(t)
     if(m <= 1){
         return
     }
@@ -88,19 +88,37 @@ function prevSlide(e) {
     }
     
     m -= 1
-    if(images.includes(m)){
 
+    if(m==15){
+        console.log("last slide")
         middle.innerHTML = `
-            <img src="../static/carousel/${m}.png">
-        `
+                <video class="baamzi" src="../static/carousel/${m}.mp4" autoplay>
+                <button class="replay-btn">Replay</button>
+            `
 
-        var t = setTimeout(nextSlide, 5000)
+        const replayBtn = document.querySelector('.replay-btn')
+        replayBtn.addEventListener("click", e => {
+            m = 0;
+            s1 = -1;
+            s2 = 1;
+        })
 
-    }else {
-        middle.innerHTML = `
-            <video class="baamzi" src="../static/carousel/${m}.mp4" autoplay>
-        `
-        clearTimeout(t)
+    }else{
+
+        if(images.includes(m)){
+    
+            middle.innerHTML = `
+                <img src="../static/carousel/${m}.png">
+            `
+    
+            var t = setTimeout(nextSlide, 5000)
+    
+        }else {
+            middle.innerHTML = `
+                <video class="baamzi" src="../static/carousel/${m}.mp4" autoplay>
+            `
+            clearTimeout(t)
+        }
     }
 
     s2 -= 1
@@ -124,7 +142,7 @@ function prevSlide(e) {
 }
 
 function nextSlide(e) {
-    
+    clearTimeout(t)
     if(m >= 15){
         return
     }
@@ -144,20 +162,39 @@ function nextSlide(e) {
     }
     
     m += 1
-    if(images.includes(m)){
-
+    if(m==15){
+        console.log("last slide")
         middle.innerHTML = `
-            <img src="../static/carousel/${m}.png">
-        `
+                <button style="margin-bottom: 1rem" class="replay-btn">Replay</button>
+                <video src="../static/carousel/${m}.mp4" autoplay>
+            `
 
-        var t = setTimeout(nextSlide, 5000)
-
-    }else {
-        middle.innerHTML = `
-            <video class="baamzi" src="../static/carousel/${m}.mp4" autoplay>
-        `
-        clearTimeout(t)
+        const replayBtn = document.querySelector('.replay-btn')
+        replayBtn.addEventListener("click", e => {
+            console.log("nfej")
+            m = 0;
+            s1 = -1;
+            s2 = 1;
+            nextSlide(e)
+        })
     }
+        else{
+
+            if(images.includes(m)){
+        
+                middle.innerHTML = `
+                    <img src="../static/carousel/${m}.png">
+                `
+        
+                var t = setTimeout(nextSlide, 5000)
+        
+            }else {
+                middle.innerHTML = `
+                    <video class="baamzi" src="../static/carousel/${m}.mp4" autoplay>
+                `
+                clearTimeout(t)
+            }
+        }
 
     s2 += 1
     if(images.includes(s2)){
@@ -192,10 +229,10 @@ function nextSlide(e) {
     // s2 -= 1
 }
 
-next.addEventListener('click', (e)=> {
-    nextSlide(e);
-})
+// next.addEventListener('click', (e)=> {
+//     nextSlide(e);
+// })
 
-prev.addEventListener('click', (e)=> {
-    prevSlide(e);
-})
+// prev.addEventListener('click', (e)=> {
+//     prevSlide(e);
+// })
