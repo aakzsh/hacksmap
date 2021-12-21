@@ -8,7 +8,10 @@ import numpy as np
 def second(pfpurl, name, followers):
     if pfpurl[0]!='h':
         pfpurl = "https:" + pfpurl
-    urllib.request.urlretrieve(pfpurl, "static/photo.png")
+    try:
+        urllib.request.urlretrieve(pfpurl, "static/photo.png")
+    except:
+        urllib.request.urlretrieve("https://devpost-challengepost.netdna-ssl.com/assets/defaults/no-avatar-100-17cf519ce6f8e4e0e83758ea09fc5eb3.png", "static/photo.png")
     im = Image.open("static/photo.png")
     im1 = im.resize((400,400))
     im1.save('static/photo1.png')
@@ -50,15 +53,26 @@ def fifth(name):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 80)
     my_image = Image.open("static/initial/5.png")
     image_editable = ImageDraw.Draw(my_image)
-    w, h = image_editable.textsize(name, font=title_font)
-    image_editable.text(((1080-w)/2,(1920-h)/2 ), name, ((255,255,245)), font=title_font, )
+    count = 0
+    lol = ""
+    for i in range(len(name)):
+        count+=1
+        if name[i]==" " and count>=15:
+            count = 0
+            lol=lol+ "\n"
+        else:
+            lol = lol + name[i]
+    w, h = image_editable.textsize(lol, font=title_font)
+    image_editable.text(((1080-w)/2,(1920-h)/2 ), lol, ((255,255,245)), font=title_font, )
     my_image.save("static/carousel/5.png")
 
 def seventh(name):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 80)
     final = ""
+    count =0
     for i in name:
-        final = final + i + "\n"
+        count+=1
+        final = final + str(count) + " " + centerbaamzi(i) + "\n"
     my_image = Image.open("static/initial/7.png")
     if len(name) == 0:
         name.append("")
@@ -95,7 +109,10 @@ def twelfth(totalteam):
 def fourteenth(url, name):
     if url[0]!='h':
         url = "https:" + url
-    urllib.request.urlretrieve(url, "static/soulmate.png")
+    try:
+        urllib.request.urlretrieve(url, "static/soulmate.png")
+    except:
+        urllib.request.urlretrieve("https://devpost-challengepost.netdna-ssl.com/assets/defaults/no-avatar-100-17cf519ce6f8e4e0e83758ea09fc5eb3.png", "static/soulmate.png")
     im = Image.open("static/soulmate.png")
     im1 = im.resize((400,400))
     im1.save('static/soulmate1.png')
@@ -112,7 +129,10 @@ def fourteenth(url, name):
     followers_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/initial/14.png")
     image_editable = ImageDraw.Draw(my_image)
-    w, h = image_editable.textsize(name.split(" ")[0], font=title_font)
+    names = name.split(" ")[0]
+    if names=="Aakash" or name=="Shruti":
+        names.lower()
+    w, h = image_editable.textsize(names, font=title_font)
     image_editable.text(((1080-w)/2,(479-h)/2 + 800), name.split(" ")[0], ((255,255,245)), font=title_font, )
     
     
@@ -122,3 +142,16 @@ def fourteenth(url, name):
     back_im = im1.copy()
     back_im.paste(im2, (340, 350))
     back_im.save('static/carousel/14.png', quality=100)
+
+
+def centerbaamzi(name):
+    lol = ""
+    count = 0
+    for i in range(len(name)):
+        count+=1
+        if name[i]==" " and count>=15:
+            count = 0
+            lol=lol+ "\n" + "  "
+        else:
+            lol = lol + name[i]
+    return lol

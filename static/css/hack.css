@@ -32,9 +32,6 @@ video, img {
 
 
 
-.middle {
-    transform: scale(1.5);
-}
 
 .side1,.side2 {
     opacity: 0.0001;
