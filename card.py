@@ -42,9 +42,6 @@ def editcard(pfpurl, name, wins, topproj, soulmate, username):
 
 
 
-# editcard("https://lh3.googleusercontent.com/a-/AOh14GiUhYwZAli2YMr4ztjIlTdeL7J2YGtqYGikHIjJ?height=180&width=180", "aakash", "13", "Zanie", "frooti", "aakzsh")
-
-
 
 
 
