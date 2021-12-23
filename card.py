@@ -23,7 +23,7 @@ def editcard(pfpurl, name, wins, topproj, soulmate, username):
     image_editable = ImageDraw.Draw(my_image)
     image_editable.text((210, 50 ), name, ((255,255,255)), font=title_font, )
     image_editable.text((210, 110 ), wins + " wins", (((132, 150, 132))), font=wins_font, )
-    image_editable.text((60, 310 ), topproj, ((255,255,255)), font=title_font, )
+    image_editable.text((60, 310 ), topproj.split(" ")[0], ((255,255,255)), font=title_font, )
     image_editable.text((60, 465 ), soulmate, ((255,255,255)), font=title_font, )
     my_image.save(f"static/{username}.png")
 
