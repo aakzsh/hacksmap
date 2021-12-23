@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import urllib.request
 import glob, os
 from pyffmpeg import FFmpeg
+import shutil
 import urllib.request
 from moviepy.editor import *
 from PIL import Image, ImageDraw, ImageFont
@@ -29,6 +30,11 @@ def select(username):
 
 @app.route('/wrapped/<username>')
 def wrapped(username):
+    directory = username.lower()
+    if os.path.isfile("static/users/"+directory+"/2.png") == False:
+        parent_dir = "static/users/"
+        path = os.path.join(parent_dir, directory)
+        os.mkdir(path)
     name = getdisplayname(username).split(" ")[0]
     pfpurl = getavatar(username)
     wins, hackathons = winnerandparticipated(username)
@@ -90,14 +96,14 @@ def wrapped(username):
     # print(totallikes)
     print(name, pfpurl, wins, hackathons, follower, top5projects, bestproject, totalteammates, topteammate, topteammateusername, topteammateavatar, totallikes)
     
-    second(pfpurl, name, follower)
-    third(hackathons)
-    fifth(bestproject)
-    seventh(top5projects)
-    ninth(wins)
-    tenth(str(hackathons), str(totallikes))
-    twelfth(str(totalteammates))
-    fourteenth(topteammateavatar,  topteammateusername)
+    second(pfpurl, name, follower, username)
+    third(hackathons, username)
+    fifth(bestproject, username)
+    seventh(top5projects, username)
+    ninth(wins, username)
+    tenth(str(hackathons), str(totallikes), username)
+    twelfth(str(totalteammates), username)
+    fourteenth(topteammateavatar,  topteammateusername, username)
     return render_template('hackathon.html')
 
 # hacker_info = []
@@ -137,6 +143,14 @@ async def tryvid():
     return render_template('lol.html')
 
     
+@app.route('/summary/<username>')
+def summary(username):
+    try:
+        shutil.rmtree("static/users/"+username)
+    except:
+        pass
+
+    return render_template('summary.html')
 
 if __name__ == "__main__":
     app.run(debug=True, threaded=True)

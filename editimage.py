@@ -5,7 +5,7 @@ from moviepy.editor import *
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 
-def second(pfpurl, name, followers):
+def second(pfpurl, name, followers, username):
     if pfpurl[0]!='h':
         pfpurl = "https:" + pfpurl
     try:
@@ -39,17 +39,17 @@ def second(pfpurl, name, followers):
     im2 = Image.open('static/photo1.png')
     back_im = im1.copy()
     back_im.paste(im2, (340, 350))
-    back_im.save('static/carousel/2.png', quality=100)
+    back_im.save(f'static/users/{username}/2.png', quality=100)
 
-def third(name):
+def third(name,username):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/initial/3.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(str(name), font=title_font)
-    image_editable.text(((1080-w)/2,(1920-h)/2 ), str(name), ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/3.png")
+    image_editable.text(((1080-w)/2,(1920-h)/2 - 25), str(name), ((255,255,245)), font=title_font, )
+    my_image.save(f"static/users/{username}/3.png")
 
-def fifth(name):
+def fifth(name, username):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 80)
     my_image = Image.open("static/initial/5.png")
     image_editable = ImageDraw.Draw(my_image)
@@ -64,9 +64,9 @@ def fifth(name):
             lol = lol + name[i]
     w, h = image_editable.textsize(lol, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 ), lol, ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/5.png")
+    my_image.save(f"static/users/{username}/5.png")
 
-def seventh(name):
+def seventh(name, username):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 80)
     final = ""
     count =0
@@ -79,34 +79,34 @@ def seventh(name):
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(name[0], font=title_font)
     image_editable.text((50,500), final, ((61,76,245)), font=title_font, )
-    my_image.save("static/carousel/7.png")
+    my_image.save(f"static/users/{username}/7.png")
 
 
-def ninth(wins):
+def ninth(wins, username):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     my_image = Image.open("static/initial/9.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(str(wins), font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 ), str(wins), ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/9.png")
+    my_image.save(f"static/users/{username}/9.png")
 
-def tenth(proj, likes):
+def tenth(proj, likes, username):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     my_image = Image.open("static/initial/10.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(likes, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 - 200 ), proj+"\n\n\n\n\n"+likes, ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/10.png")
+    my_image.save(f"static/users/{username}/10.png")
 
-def twelfth(totalteam):
+def twelfth(totalteam, username):
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/initial/12.png")
     image_editable = ImageDraw.Draw(my_image)
     w, h = image_editable.textsize(totalteam, font=title_font)
     image_editable.text(((1080-w)/2,(1920-h)/2 + 50 ), totalteam, ((255,255,245)), font=title_font, )
-    my_image.save("static/carousel/12.png")
+    my_image.save(f"static/users/{username}/12.png")
 
-def fourteenth(url, name):
+def fourteenth(url, name, username):
     if url[0]!='h':
         url = "https:" + url
     try:
@@ -141,7 +141,7 @@ def fourteenth(url, name):
     im2 = Image.open('static/soulmate1.png')
     back_im = im1.copy()
     back_im.paste(im2, (340, 350))
-    back_im.save('static/carousel/14.png', quality=100)
+    back_im.save(f'static/users/{username}/14.png', quality=100)
 
 
 def centerbaamzi(name):
