@@ -7,6 +7,7 @@ import urllib.request
 from moviepy.editor import *
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
+from card import editcard
 from editimage import fourteenth,  fifth,  second, ninth, seventh,  tenth, twelfth, third
 import asyncio
 from map import locateHacker
@@ -104,6 +105,7 @@ def wrapped(username):
     tenth(str(hackathons), str(totallikes), username)
     twelfth(str(totalteammates), username)
     fourteenth(topteammateavatar,  topteammateusername, username)
+    editcard(pfpurl, name, wins, bestproject, topteammateusername, username )
     return render_template('hackathon.html')
 
 # hacker_info = []

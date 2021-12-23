@@ -7,6 +7,80 @@
     <title>Document</title>
 </head>
 <body>
-    <p>summary yay</p>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+
+        }
+        .container{
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        button{
+    background-color: rgba(119, 62, 139, 1);
+    border-radius: 2rem;
+    color: white;
+    border: 2px solid transparent;
+    padding: 0.5rem 2.5rem;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+    </style>
+    <script>
+        // var username = "JackBiggin"
+        var username = window.location.href.split("/").at(-1)
+function setsrc(){
+    
+    document.querySelector(".image").src=`../static/${username}.png`
+    document.querySelector(".download").href=`../static/${username}.png`
+    console.log("heheheh")
+}
+        window.addEventListener("load", setsrc)
+        function redirectbaamzi(){
+            
+            window.location.href=`/wrapped/${username}`
+            
+        }
+
+        async function downloadImage(imageSrc) {
+  const image = await fetch(imageSrc)
+  const imageBlog = await image.blob()
+  const imageURL = URL.createObjectURL(imageBlog)
+
+  const link = document.createElement('a')
+  link.href = imageURL
+  link.download = 'image file name here'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+        
+    </script>
+
+
+    <div class="container">
+      <img class="image" src="../static/carousel/5.png" alt="" height="70%">
+      <br>
+      <div style="display: flex; justify-content: space-around; width: 30%; ">
+        <button onclick="redirectbaamzi()">replay</button>
+        <button ><a class="download" href="" download target="_blank">download</a></button>
+        
+      </div>
+    </div>
 </body>
 </html>

@@ -9,21 +9,12 @@ def second(pfpurl, name, followers, username):
     if pfpurl[0]!='h':
         pfpurl = "https:" + pfpurl
     try:
-        urllib.request.urlretrieve(pfpurl, "static/photo.png")
+        urllib.request.urlretrieve(pfpurl, f"static/users/{username}/photo.png")
     except:
-        urllib.request.urlretrieve("https://devpost-challengepost.netdna-ssl.com/assets/defaults/no-avatar-100-17cf519ce6f8e4e0e83758ea09fc5eb3.png", "static/photo.png")
-    im = Image.open("static/photo.png")
+        urllib.request.urlretrieve("https://devpost-challengepost.netdna-ssl.com/assets/defaults/no-avatar-100-17cf519ce6f8e4e0e83758ea09fc5eb3.png", f"static/users/{username}/photo.png")
+    im = Image.open(f"static/users/{username}/photo.png")
     im1 = im.resize((400,400))
-    im1.save('static/photo1.png')
-    img=Image.open("static/photo1.png").convert("RGB")
-    npImage=np.array(img)
-    h,w=img.size
-    alpha = Image.new('L', img.size,0)
-    draw = ImageDraw.Draw(alpha)
-    draw.pieslice([0,0,h,w],0,360,fill=255)
-    npAlpha=np.array(alpha)
-    npImage=np.dstack((npImage,npAlpha))
-    Image.fromarray(npImage).save('static/photo2.png')
+    im1.save(f'static/users/{username}/photo2.png')
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     followers_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/initial/2.png")
@@ -36,7 +27,7 @@ def second(pfpurl, name, followers, username):
     
     my_image.save('static/carousel/kardolol.png')
     im1 = Image.open('static/carousel/kardolol.png')
-    im2 = Image.open('static/photo1.png')
+    im2 = Image.open(f'static/users/{username}/photo2.png')
     back_im = im1.copy()
     back_im.paste(im2, (340, 350))
     back_im.save(f'static/users/{username}/2.png', quality=100)
@@ -110,21 +101,12 @@ def fourteenth(url, name, username):
     if url[0]!='h':
         url = "https:" + url
     try:
-        urllib.request.urlretrieve(url, "static/soulmate.png")
+        urllib.request.urlretrieve(url, f"static/users/{username}/soulmate.png")
     except:
         urllib.request.urlretrieve("https://devpost-challengepost.netdna-ssl.com/assets/defaults/no-avatar-100-17cf519ce6f8e4e0e83758ea09fc5eb3.png", "static/soulmate.png")
-    im = Image.open("static/soulmate.png")
+    im = Image.open(f"static/users/{username}/soulmate.png")
     im1 = im.resize((400,400))
-    im1.save('static/soulmate1.png')
-    img=Image.open("static/soulmate1.png").convert("RGB")
-    npImage=np.array(img)
-    h,w=img.size
-    alpha = Image.new('L', img.size,0)
-    draw = ImageDraw.Draw(alpha)
-    draw.pieslice([0,0,h,w],0,360,fill=255)
-    npAlpha=np.array(alpha)
-    npImage=np.dstack((npImage,npAlpha))
-    Image.fromarray(npImage).save('static/soulmate2.png')
+    im1.save(f'static/users/{username}/soulmate2.png')
     title_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 150)
     followers_font = ImageFont.truetype('static/Montserrat-ExtraBold.ttf', 100)
     my_image = Image.open("static/initial/14.png")
@@ -138,7 +120,7 @@ def fourteenth(url, name, username):
     
     my_image.save('static/carousel/kardolel.png')
     im1 = Image.open('static/carousel/kardolel.png')
-    im2 = Image.open('static/soulmate1.png')
+    im2 = Image.open(f'static/users/{username}/soulmate2.png')
     back_im = im1.copy()
     back_im.paste(im2, (340, 350))
     back_im.save(f'static/users/{username}/14.png', quality=100)

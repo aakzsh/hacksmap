@@ -181,7 +181,7 @@ function delaykaro(){
                 middle.innerHTML = `
                     <img src="../static/users/${username}/${m}.png">
                 `
-        
+                 
                 var t = setTimeout(nextSlide, 5000)
         
             }else {

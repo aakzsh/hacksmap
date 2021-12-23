@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 body{
-    background-image: url(https://media.discordapp.net/attachments/873911460055642152/922027116420280380/bg.png?width=1033&height=671);
+    background-image: none;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: black;
@@ -60,10 +60,25 @@ button{
     border: 2px solid transparent;
     width: 23rem;
     height: 3rem;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: 0.8;
 }
 
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 850px) {
+    body{
+        background-image: url(https://media.discordapp.net/attachments/873911460055642152/922027116420280380/bg.png?width=1033&height=671);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: black;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        
+    }
     .title{
         margin-bottom: -1rem;
         font-size: 3rem;
