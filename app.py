@@ -35,7 +35,10 @@ def wrapped(username):
     if os.path.isfile("static/users/"+directory+"/2.png") == False:
         parent_dir = "static/users/"
         path = os.path.join(parent_dir, directory)
-        os.mkdir(path)
+        try:
+            os.mkdir(path)
+        except:
+            pass
     name = getdisplayname(username).split(" ")[0]
     pfpurl = getavatar(username)
     wins, hackathons = winnerandparticipated(username)
