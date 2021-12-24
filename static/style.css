@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 body{
-    background-image: url(https://media.discordapp.net/attachments/873911460055642152/922027116420280380/bg.png?width=1033&height=671);
+    background-image: none;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: black;
@@ -10,17 +10,19 @@ body{
 }
 
 .title{
+    margin-left: 1rem;
     margin-bottom: -1rem;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .subtitle{
+    margin-left: 1rem;
     font-weight: 100;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 .maindiv{
     margin-right: 2rem;
-    float: right;
+    /* float: right; */
     margin: 0;
     position: absolute;
     right: 2rem;
@@ -30,9 +32,14 @@ body{
 }
 
 .rowbaamzi{
+    margin-left: 2rem;
+    height: 8rem;
+    justify-content: space-around;
+    align-items: center;
+    width: 20rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    /* justify-content: space-between; */
 }
 
 input{
@@ -53,4 +60,49 @@ button{
     border: 2px solid transparent;
     width: 23rem;
     height: 3rem;
+    transition: 0.4s;
+    cursor: pointer;
 }
+
+button:hover{
+    opacity: 0.8;
+}
+
+
+@media screen and (min-width: 850px) {
+    body{
+        background-image: url(https://media.discordapp.net/attachments/873911460055642152/922027116420280380/bg.png?width=1033&height=671);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: black;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        
+    }
+    .title{
+        margin-bottom: -1rem;
+        font-size: 3rem;
+    }
+    
+    .subtitle{
+        font-weight: 100;
+        font-size: 1.5rem;
+    }
+
+    .maindiv{
+        margin-right: 2rem;
+        float: right;
+        margin: 0;
+        position: absolute;
+        right: 2rem;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    .rowbaamzi{
+        width: 50rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+  }

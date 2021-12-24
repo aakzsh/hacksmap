@@ -11,6 +11,8 @@ const side1Btn = document.querySelector('.side1-btn')
 const side2Btn = document.querySelector('.side2-btn')
 
 const baamzi = document.querySelector('.baamzi')
+var username = window.location.href.split("/").at(-1)
+
 
 m = 0;
 s1 = -1;
@@ -28,7 +30,7 @@ baamzi.onended = function(e) {
     if(images.includes(s1)){
 
         side1.innerHTML = `
-            <img src="../static/carousel/${s1}.png">
+            <img src="../static/users/${username}/${s1}.png">
         `
 
         
@@ -43,7 +45,7 @@ baamzi.onended = function(e) {
     if(images.includes(m)){
 
         middle.innerHTML = `
-            <img src="../static/carousel/${m}.png">
+            <img src="../static/users/${username}/${m}.png">
         `
 
     }else {
@@ -56,7 +58,7 @@ baamzi.onended = function(e) {
     if(images.includes(s2)){
 
         side2.innerHTML = `
-            <img src="../static/carousel/${s2}.png">
+            <img src="../static/users/${username}/${s2}.png">
         `
 
     }else {
@@ -78,7 +80,7 @@ function prevSlide(e) {
     if(images.includes(s1)){
 
         side1.innerHTML = `
-            <img src="../static/carousel/${s1}.png">
+            <img src="../static/users/${username}/${s1}.png">
         `
 
     }else {
@@ -108,7 +110,7 @@ function prevSlide(e) {
         if(images.includes(m)){
     
             middle.innerHTML = `
-                <img src="../static/carousel/${m}.png">
+                <img src="../static/users/${username}/${m}.png">
             `
     
             var t = setTimeout(nextSlide, 5000)
@@ -125,7 +127,7 @@ function prevSlide(e) {
     if(images.includes(s2)){
 
         side2.innerHTML = `
-            <img src="../static/carousel/${s2}.png">
+            <img src="../static/users/${username}/${s2}.png">
         `
 
     }else {
@@ -152,7 +154,7 @@ function nextSlide(e) {
     if(images.includes(s1)){
 
         side1.innerHTML = `
-            <img src="../static/carousel/${s1}.png">
+            <img src="../static/users/${username}/${s1}.png">
         `
 
     }else {
@@ -165,27 +167,21 @@ function nextSlide(e) {
     if(m==15){
         console.log("last slide")
         middle.innerHTML = `
-                <button style="margin-bottom: 1rem" class="replay-btn">Replay</button>
                 <video src="../static/carousel/${m}.mp4" autoplay>
             `
-
-        const replayBtn = document.querySelector('.replay-btn')
-        replayBtn.addEventListener("click", e => {
-            console.log("nfej")
-            m = 0;
-            s1 = -1;
-            s2 = 1;
-            nextSlide(e)
-        })
+function delaykaro(){
+    window.location.href=`/summary/${username}`
+}
+        setTimeout(delaykaro, 6000)
     }
         else{
 
             if(images.includes(m)){
         
                 middle.innerHTML = `
-                    <img src="../static/carousel/${m}.png">
+                    <img src="../static/users/${username}/${m}.png">
                 `
-        
+                 
                 var t = setTimeout(nextSlide, 5000)
         
             }else {
@@ -200,7 +196,7 @@ function nextSlide(e) {
     if(images.includes(s2)){
 
         side2.innerHTML = `
-            <img src="../static/carousel/${s2}.png">
+            <img src="../static/users/${username}/${s2}.png">
         `
 
     }else {
