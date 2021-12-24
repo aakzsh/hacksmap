@@ -110,7 +110,7 @@ def map(username):
     nameAndLatlng = {}
     for hacker in loc.keys():
         if loc[hacker] != '':
-            nameAndLatlng[hacker] = [locateHacker(loc[hacker]), getavatar(hacker)]
+            nameAndLatlng[hacker] = [locateHacker(loc[hacker]), getavatar(hacker), getdisplayname(hacker)]
     # print(nameAndLatlng)
     return render_template('map.html', nameAndLatlng=nameAndLatlng)
 
