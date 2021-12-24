@@ -23,7 +23,7 @@ def index():
 
 @app.route('/select/<username>')
 def select(username):
-    username = username.lower()
+    
     try:
         urllib.request.urlopen(f"https://www.devpost.com/{username}")
         return render_template('select.html', username=username)
@@ -32,8 +32,8 @@ def select(username):
 
 @app.route('/wrapped/<username>')
 def wrapped(username):
-    directory = username.lower()
-    username = username.lower()
+    directory = username
+    
     if os.path.isfile("static/users/"+directory+"/2.png") == False:
         parent_dir = "static/users/"
         path = os.path.join(parent_dir, directory)
@@ -116,7 +116,7 @@ def wrapped(username):
 # hacker_info = []
 @app.route('/map/<username>')
 def map(username):
-    username = username.lower()
+    
     hackername = getdisplayname(username)
     hackeravatar = getavatar(username)
     projectlist, memberCount, memberLink = getTotalProjects(username)
@@ -153,7 +153,7 @@ async def tryvid():
     
 @app.route('/summary/<username>')
 def summary(username):
-    username = username.lower()
+    
     try:
         shutil.rmtree("static/users/"+username)
     except:
