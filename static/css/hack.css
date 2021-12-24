@@ -69,3 +69,10 @@ button{
 .hide {
     display: none;
 }
+
+.leaflet-marker-icon{
+    /* display: block; */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
