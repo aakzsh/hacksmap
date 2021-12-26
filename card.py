@@ -6,6 +6,7 @@ import urllib
     
     
 def editcard(pfpurl, name, wins, topproj, soulmate, username):    
+    wins = str(wins)
     # urllib.request.urlretrieve(pfpurl, "static/baamzipfp.png")
     im = Image.open(f"static/users/{username}/photo.png")
     im1 = im.resize((100,100))
