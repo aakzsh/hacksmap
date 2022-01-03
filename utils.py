@@ -89,6 +89,7 @@ def getTotalProjects(param):
 def getfriendslocation(param):
     projectlist, memberCount, memberLink  = getTotalProjects(param)
     loc = {}
+    avatar={}
     for key in memberLink.keys():
         new_url = "https://devpost.com/" + key
         
@@ -102,11 +103,17 @@ def getfriendslocation(param):
             
             
             curr = location.getText().strip()
-            
+            soup = BeautifulSoup(res.text, features="html.parser")
+            avatarurl = soup.find('img', attrs = {"class": "user-photo"})
+            lmao = avatarurl['src']
+            # print(f"")
+            print(f"avatar dictionalry: {lmao}")
         else:
             curr = ""
         loc[key] = curr
-    return loc
+        avatar[key] = lmao
+        
+    return loc, avatar
 
 
 def getfollowers(param):
