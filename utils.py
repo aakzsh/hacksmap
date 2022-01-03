@@ -97,7 +97,10 @@ def getfriendslocation(param):
         soup = BeautifulSoup(res.text, features="html.parser")
 
         cl = soup.find('ul', attrs = {'id': 'portfolio-user-links'})
-        location = cl.find('li')
+        try:
+            location = cl.find('li')
+        except:
+            location = False
         flag = soup.find('span', attrs = {'class':'ss-location'})
         if location and flag:
             
