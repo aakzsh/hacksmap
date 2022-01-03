@@ -90,7 +90,11 @@ def getfriendslocation(param):
     projectlist, memberCount, memberLink  = getTotalProjects(param)
     loc = {}
     avatar={}
+    count = 0
     for key in memberLink.keys():
+        count+=1
+        if count>24:
+            break
         new_url = "https://devpost.com/" + key
         
         res = requests.get(new_url)
